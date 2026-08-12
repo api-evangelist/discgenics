@@ -1,0 +1,94 @@
+generated: '2026-08-12'
+method: probed
+source: live HTTPS probes of every DiscGenics host
+note: >-
+  Every /.well-known/ path probed on both DiscGenics hosts returned 404. Nothing was
+  served, so NO WellKnown or SecurityTxt pointer is wired into apis.yml — this file
+  records a verified absence, not a presence. Both sites are Squarespace-hosted
+  marketing/patient-recruitment properties with no API surface. Note that
+  /.well-known/security.txt returns a Squarespace JSON body
+  ('{"message":"security.txt not found"}') with a 404 status, and every other
+  /.well-known/ path returns the Squarespace HTML 404 page — neither is a document.
+hosts:
+- host: https://www.discgenics.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    body: application/json ({"message":"security.txt not found"})
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://www.dddtrial.com
+  note: >-
+    DDDtrial.com is the patient-recruitment site DiscGenics launched in April 2026 for
+    its Phase III lumbar degenerative disc disease program. Probed as a second
+    first-party host.
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    body: application/json ({"message":"security.txt not found"})
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+contract_discovery:
+  note: >-
+    STEP 0b contract discovery run in full against every known DiscGenics host. No
+    OpenAPI, Swagger, GraphQL, MCP or A2A surface exists. apis.yml carries no
+    baseURL and no OpenAPI servers[] entries because the company publishes no API.
+  probes:
+  - url: https://www.discgenics.com/openapi.json
+    status: 404
+  - url: https://www.discgenics.com/openapi.yaml
+    status: 404
+  - url: https://www.discgenics.com/swagger.json
+    status: 404
+  - url: https://www.discgenics.com/v1/openapi.json
+    status: 404
+  - url: https://www.discgenics.com/api-docs
+    status: 404
+  - url: https://www.discgenics.com/docs
+    status: 404
+  - url: https://www.discgenics.com/redoc
+    status: 404
+  - url: https://www.discgenics.com/graphql
+    status: 404
+  - url: https://www.discgenics.com/llms.txt
+    status: 404
+  - url: https://www.dddtrial.com/openapi.json
+    status: 404
+  - url: https://www.dddtrial.com/llms.txt
+    status: 404
+  - url: https://www.discgenics.com/robots.txt
+    status: 200
+    note: >-
+      Squarespace default robots.txt. Disallows /api/ (the Squarespace CMS internal
+      path, not a public API), /config, /search, /static/. Lists AI crawler
+      user-agents (GPTBot, ClaudeBot, anthropic-ai, CCBot, Google-Extended and
+      others) grouped with the wildcard record rather than blocked outright.
+  - url: https://www.discgenics.com/sitemap.xml
+    status: 200
+    note: >-
+      139 URLs, all marketing/news/blog pages in English and Japanese. No developer,
+      API, or reference pages.
+github_org:
+  searched: https://api.github.com/search/users?q=discgenics
+  result: 0 users, 0 repositories
+  note: DiscGenics operates no public GitHub organization.
