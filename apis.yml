@@ -10,6 +10,17 @@ description: 'DiscGenics is a privately held, late-stage clinical biopharmaceuti
   a US Phase III program (the PIVOT and CONFIRM studies) alongside a clinical study
   in Japan. DiscGenics is a therapeutics developer, not a software vendor: it publishes
   no developer portal, API, SDK or machine-readable specification of any kind.'
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: http://static1.squarespace.com/static/59d2b1d812abd948b8707a48/t/59e93fb88a02c760fefcc86b/1774284572317/Discgenics-Logo-White.png?format=1500w
 url: https://raw.githubusercontent.com/api-evangelist/discgenics/refs/heads/main/apis.yml
 x-type: company
